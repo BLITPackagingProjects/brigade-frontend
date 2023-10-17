@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,7 +27,7 @@ const Navbar = () => {
                     </ul>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <Link className="nav-link " to="/logout" tabindex="-1">Logout</Link>
                     </li>
                 </ul>
                 <form className="d-flex">
