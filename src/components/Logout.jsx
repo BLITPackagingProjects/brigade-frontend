@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
-const Logout = () => {
 
+const Logout = (props) => {
     const username = localStorage.getItem("name");
     localStorage.clear();
+    props.history.replace("/home")
+    
     return(
-        <div>
-            <h2>See you again {username}</h2>
-             <Link to="/login" >Login again</Link>
-        </div>
+        null
     )
 }
 

@@ -1,49 +1,53 @@
 import axios from 'axios';
 import { useRef } from "react";
-import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
     const uname = useRef(null);
     const pword = useRef(null);
+    const abortController = new AbortController();
+    const submitHandler = (e)=>{
+        e.preventDefault();
 
-    const navigate = useNavigate();
-
-    const submitHandler =(e)=>{        
-        e.preventDefault();      
-        const uname =  uname.current.value ;
-        const pword = pword.current.value;
-        if(uname == null || pword == null){
-          navigate("/login")
-        }
+        const username =  uname.current.value ;
+        const password = pword.current.value;
+        if(username==null) return;
         let data = JSON.stringify({
-          "username": uname,
-          "password": pword
+          "username": username,
+          "password": password
         });
         let auth = btoa(`${uname.current.value}:${pword.current.value}`);
         let config = {
           method: 'post',
           maxBodyLength: Infinity,
           url: 'http://localhost:9090/login',
-          headers: { 
-            'Content-Type': 'application/json', 
-            'Authorization': `Basic ${auth}` //+  
-            
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${auth}`
           },
           data : data
         };
         axios.request(config)
             .then((response) => {
-              console.log(response);//JSON.stringify(response.data));
+              console.log(response.data);//JSON.stringify(response.data));
               if(response.status == 200){
                 console.log('status: 200')
-                
+                localStorage.setItem("pass", pword.current.value);
+                localStorage.setItem("name", uname.current.value);
+                props.history.replace("/home") ;
               }
             })
             .catch((error) => {
-              console.log(error);
-            }); 
-            localStorage.setItem("pass", pword.current.value);
-                localStorage.setItem("name", uname.current.value);
+              if (403 == error.response.status) {
+                console.log("Authentication failed. Please try again");
+                
+              } 
+              if (401 == error.response.status) {
+                console.log("Authentication failed. Please try again");
+                
+              } 
+              
+              
+            });
     }
     return(
         /*
@@ -56,13 +60,12 @@ const Login = () => {
         <div className='container '>
           <div className='row justify-content-center'>
             <div className='col-md-4 col-sm-8 justify-content-md-center'>
-              <form className='form-control mt-4 ' onSubmit={submitHandler} method='post'>
+              <form className='form-control mt-4 ' method='POST' onSubmit={submitHandler}>
                 <h3 className='row justify-content-md-center'>Login</h3>
-                <div></div>
+                <div className='text-center textColor-red'>{}</div>
                 <div className="form-outline my-4">
-                  <input type="email" required className="form-control" ref={uname} placeholder="Email" />
-                </div>
-              
+                  <input type="text"  className="form-control" ref={uname} placeholder="Username" required/>
+                </div>             
                 
                 <div className="form-outline mb-4">
                   <input type="password" required className="form-control" ref={pword} placeholder="Password" />
@@ -84,10 +87,9 @@ const Login = () => {
                   </div>
                 </div>      
                 <div className='row justify-content-md-center'>
-                  <Link to="/home">
-                  <button type="button" className="btn btn-primary btn-block mb-4 col-xm-12 col-sm-7" >Sign in</button>
+                   {/*(uname!=null && pword!=null)?submitHandler:null*/} 
+                  <button type="submit" className="btn btn-primary btn-block mb-4 col-xm-12 col-sm-7" >Sign in</button>
                
-                  </Link>
                    </div>                
                 
                 <div className="text-center">
