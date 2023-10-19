@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios';
 import { useState } from 'react';
+import {Link} from 'react-router-dom'
 
 function DisplayImage() {
     const pid = 302;
@@ -31,7 +32,8 @@ function DisplayImage() {
             <h2>Pet Image</h2>
                 
             
-            <img src={image} style={{width: 480+'px', height: 640+'px'}} alt=' ' defaultValue={null}/>
+            <img src={image} style={{width: 480+'px', height: 640+'px'}} alt=' ' defaultValue={null}/><br/><br/>
+            <Link to="/pet" className="btn btn-danger">Go back</Link>
         </div>
  
     );

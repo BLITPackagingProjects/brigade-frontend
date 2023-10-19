@@ -9,7 +9,7 @@ function RegisterPet(){
     const[petBreed, setBreed] = useState("");
     const[petColor, setColor] = useState("");
     const[petType, setType] = useState("");
-    const[petImage, setImage] = useState("");
+    // const[petImage, setImage] = useState("");
 
     async function add(event){
         //event.preventDefault();
@@ -20,7 +20,7 @@ function RegisterPet(){
             breed: petBreed,
             color: petColor,
             type: petType,
-            image: petImage
+            // image: petImage
             });
             alert("Pet Registration Successfully!");
         }
@@ -83,17 +83,18 @@ function RegisterPet(){
                     }}
                     />
                 </div>
-                <div class="mb-3">
+                {/* <div class="mb-3">
                     <label for="petImage" class="form-label">Image: </label>
                     <input type="text" class="form-control" id="petImage" required
-                    placeholder="Select image"
+                    placeholder="Select image" onClick={}
                     value={petImage} 
                     onChange={(event) =>{
                         setImage(event.target.value);
                     }}
                     />
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>&nbsp;
+                </div> */}
+                <Link to="/pet-image" className="btn btn-primary" target="_blank">Add image</Link><br/><br/>
+                <button t toype="submit" class="btn btn-success">Submit</button>&nbsp;
                 {/* <Link to="/" class="btn btn-danger">Cancel</Link> */}
             </form>
         </div>

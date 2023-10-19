@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
 const AllPetList = () => {
 
@@ -12,7 +13,7 @@ useEffect(()=>{
 ,[]);
 
 const loadPet =async()=>{
-  const result = await axios.get("http://localhost:9090/pet");
+  const result = await axios.get("http://localhost:8080/pet");
   setPet(result.data);
 }
 
@@ -33,28 +34,29 @@ const loadPet =async()=>{
       <th scope="col">Color</th>
       <th scope="col">Age</th>
       <th scope="col">Breed</th>
-      <th scope="col">Image</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     
-    {pets.map((pet) => {
-            return(
-              <div>
-                <ul>
-                  <li>{pet.pet_id}</li>
-                  <li>{pet.pet_name}</li>
-                  <li></li>
-                  <li><button onClick={(pet)=>{
-                    return (<PetDetail value={pet.pet_id}/>)
-                  }}></button></li>
-                </ul>
-              </div>
-            )
-            
-    })}
+  {
+                    pets.map((d) =>(
+                        <tr key={d.pet_id}>
+                            <td>{d.pet_id}</td>
+                            <td>{d.name}</td>
+                            <td>{d.age}</td>
+                            <td>{d.breed}</td>
+                            <td>{d.color}</td>
+                            <td>
+                              <Link to="/pet-details" className="btn btn-primary">View Details</Link>
+                            </td>
+
+                        </tr>
+                    ))
+                    }
         </tbody>
       </table>
+      <Link to="/pet-register" className='btn btn-primary'>Add pet</Link>
     </div>
   );
 
