@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
-import axios from 'axios';
 import { useState } from 'react';
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-function DisplayImage() {
-    const {pid} = useParams();
+function DisplayImage(props) {
+
     const[image, setImg] = useState()
  
         const fetchImage = async () => {
-            const res = await fetch(`http://localhost:8080/api/v1/pet/image/${pid}`);
+            const res = await fetch(`http://localhost:8080/api/v1/pet/image/${props.match.params.pid}`);
             const imageBlob = await res.blob();
             const imageObjectURL = URL.createObjectURL(imageBlob);
             setImg(imageObjectURL);

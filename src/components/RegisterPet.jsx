@@ -1,9 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function RegisterPet(){
-    const navigate = useNavigate();
+function RegisterPet(props){
+    // const navigate = useNavigate();
     var formData = new FormData();
   
      function handleChange(e) {
@@ -30,7 +30,7 @@ function RegisterPet(){
             await axios.post("http://localhost:8080/api/v1/pet", formData)
             .then(alert("Pet Registered Successfully!"))
             .catch(err => console.log(err))
-            navigate("/pet");
+            props.history.replace("/pet");
         }
         catch(err){
             alert("Pet Was NOT Registered!")

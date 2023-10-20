@@ -6,7 +6,6 @@ const AllPetList = () => {
 
 const[pets, setPet] = useState([])
 
-
 useEffect(()=>{
   loadPet();
 }     
@@ -16,7 +15,6 @@ const loadPet =async()=>{
   const result = await axios.get("http://localhost:8080/pet");
   setPet(result.data);
 } 
-
 
     return(
         <div>
@@ -61,7 +59,5 @@ const loadPet =async()=>{
   );
 
 }
-
-
 
 export default AllPetList;

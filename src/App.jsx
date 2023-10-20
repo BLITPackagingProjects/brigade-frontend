@@ -7,22 +7,20 @@ import Navbar from './components/Navbar'
 import Login from './components/Login'
 import AllPetList from './components/AllPetList'
 import NotFound from './components/NotFound'
-import { Route, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 function App() {
 
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route exact path="/pet-image" element={<UploadPetImage/>}></Route>
-        <Route exact path="/pet-register" element={<RegisterPet/>}></Route>
-        <Route exact path="/pet-image/:pid" element={<DisplayImage/>}></Route>
-        <Route exact path="/" element= {<Login/>}></Route>
-        <Route exact path="/login" element= {<Login/>}></Route>
-        <Route exact path="/pet" element= {<AllPetList/>}></Route>
-        <Route exact path="/*" element= {<NotFound/>}></Route>
-      </Routes>
+        <Route exact path="/pet-image" component={UploadPetImage}></Route>
+        <Route exact path="/pet-register" component={RegisterPet}></Route>
+        <Route exact path="/pet-image/:pid" component={DisplayImage}></Route>
+        <Route exact path="/" component= {Login}></Route>
+        <Route exact path="/login" component= {Login}></Route>
+        <Route exact path="/pet" component= {AllPetList}></Route>
+        <Route exact path="/*" component= {NotFound}></Route>
     </div>
   )
 }
