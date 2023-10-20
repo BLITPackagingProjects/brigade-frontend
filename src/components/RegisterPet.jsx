@@ -3,99 +3,86 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom";
 
 function RegisterPet(){
-    // const navigate = useNavigate();
-    const[petName, setName] = useState("");
-    const[petAge, setAge] = useState("");
-    const[petBreed, setBreed] = useState("");
-    const[petColor, setColor] = useState("");
-    const[petType, setType] = useState("");
-    // const[petImage, setImage] = useState("");
+    const navigate = useNavigate();
+    var formData = new FormData();
+  
+     function handleChange(e) {
+         formData.append('petImage',e.target.files[0]);
+     }
+  
+    let [values, setValues] = useState({
+        name:'',
+        color:'',
+        breed:'',
+        type:'',
+        age:''
+    })
 
-    async function add(event){
-        //event.preventDefault();
+    async function handleSubmit(e) {
+        e.preventDefault();
+        formData.append('name', values.name);
+        formData.append('age', values.age);
+        formData.append('color', values.color);
+        formData.append('breed', values.breed);
+        formData.append('type', values.type);
+        
         try{
-            await axios.post("http://localhost:8080/api/v1/pet",{
-            name: petName,
-            age: petAge,
-            breed: petBreed,
-            color: petColor,
-            type: petType,
-            // image: petImage
-            });
-            alert("Pet Registration Successfully!");
+            await axios.post("http://localhost:8080/api/v1/pet", formData)
+            .then(alert("Pet Registered Successfully!"))
+            .catch(err => console.log(err))
+            navigate("/pet");
         }
         catch(err){
-            alert("Pet was not added!");
+            alert("Pet Was NOT Registered!")
         }
-        // navigate('/seller-cart');
     }
-   
     return(
-        <div class="container p-3 my-5 border border-dark"> 
+        <div className="container p-3 my-5 border border-dark"> 
             <h1>Pet Registration</h1>
-            <form onSubmit={add}>
-            <div class="mb-3">
-                    <label for="petName" class="form-label">Name: </label>
-                    <input type="text" class="form-control" id="petName" required
+            <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                    <label htmlFor="petName" className="form-label">Name: </label>
+                    <input type="text" className="form-control" id="petName" required
                     placeholder="Enter name" autoFocus 
-                    value={petName} 
-                    onChange={(event) =>{
-                        setName(event.target.value);
-                    }}/>
+                    value={values.name} 
+                    onChange={e => setValues({...values, name: e.target.value})}/>
                 </div>
-                <div class="mb-3">
-                    <label for="petAge" class="form-label">Age: </label>
-                    <input type="number" class="form-control" id="petAge" required
+                <div className="mb-3">
+                    <label htmlFor="petAge" className="form-label">Age: </label>
+                    <input type="number" className="form-control" id="petAge" required
                     placeholder="Enter Age" min={1} max={60}
-                    value={petAge} 
-                    onChange={(event) =>{
-                        setAge(event.target.value);
-                    }}
+                    value={values.age} 
+                    onChange={e => setValues({...values, age: e.target.value})}
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="petBreed" class="form-label">Breed: </label>
-                    <input type="text" class="form-control" id="petBreed" required
+                <div className="mb-3">
+                    <label htmlFor="petBreed" className="form-label">Breed: </label>
+                    <input type="text" className="form-control" id="petBreed" required
                     placeholder="Enter breed"
-                    value={petBreed} 
-                    onChange={(event) =>{
-                        setBreed(event.target.value);
-                    }}
+                    value={values.breed} 
+                    onChange={e => setValues({...values, breed: e.target.value})}
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="petColor" class="form-label">Color: </label>
-                    <input type="text" class="form-control" id="petColor" required
+                <div className="mb-3">
+                    <label htmlFor="petColor" className="form-label">Color: </label>
+                    <input type="text" className="form-control" id="petColor" required
                     placeholder="Enter color"
-                    value={petColor} 
-                    onChange={(event) =>{
-                        setColor(event.target.value);
-                    }}
+                    value={values.color} 
+                    onChange={e => setValues({...values, color: e.target.value})}
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="petType" class="form-label">Type: </label>
-                    <input type="text" class="form-control" id="petType" required
+                <div className="mb-3">
+                    <label htmlFor="petType" className="form-label">Type: </label>
+                    <input type="text" className="form-control" id="petType" required
                     placeholder="Enter type"
-                    value={petType} 
-                    onChange={(event) =>{
-                        setType(event.target.value);
-                    }}
+                    value={values.type} 
+                    onChange={e => setValues({...values, type: e.target.value})}
                     />
                 </div>
-                {/* <div class="mb-3">
-                    <label for="petImage" class="form-label">Image: </label>
-                    <input type="text" class="form-control" id="petImage" required
-                    placeholder="Select image" onClick={}
-                    value={petImage} 
-                    onChange={(event) =>{
-                        setImage(event.target.value);
-                    }}
-                    />
-                </div> */}
-                <Link to="/pet-image" className="btn btn-primary" target="_blank">Add image</Link><br/><br/>
-                <button t toype="submit" class="btn btn-success">Submit</button>&nbsp;
-                {/* <Link to="/" class="btn btn-danger">Cancel</Link> */}
+                <label htmlFor="petImage">Image: </label><br/>
+                <input type='file' id="petImage" onChange={handleChange} required />
+                <button type="submit" className="btn btn-primary">Submit</button>&nbsp;
+                <Link to="/pet" className="btn btn-danger">Cancel</Link>
             </form>
         </div>
     )
