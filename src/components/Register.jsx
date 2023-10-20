@@ -43,7 +43,7 @@ const Register = (props) => {
             });
         }
     return(
-        <div className="container">
+        <div className="container ">
             <form className="form-control container" method="POST" onSubmit={handleRegister}>
                 <div className="mb-3">
                     <input type="text" className="form-control" ref={fname} placeholder="First Name"/>

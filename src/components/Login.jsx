@@ -4,7 +4,6 @@ import { useRef } from "react";
 const Login = (props) => {
     const uname = useRef(null);
     const pword = useRef(null);
-    const abortController = new AbortController();
     const submitHandler = (e)=>{
         e.preventDefault();
 
@@ -33,6 +32,8 @@ const Login = (props) => {
                 console.log('status: 200')
                 localStorage.setItem("pass", pword.current.value);
                 localStorage.setItem("name", uname.current.value);
+                localStorage.setItem("uid", response.data.id);
+                localStorage.setItem("role", response.data.role.name);
                 props.history.replace("/home") ;
               }
             })
