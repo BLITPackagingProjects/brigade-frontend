@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useRef } from "react";
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
     const uname = useRef(null);
@@ -78,7 +79,7 @@ const Login = (props) => {
                   
                     <div className="form-check">
                       <input className="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                      <label className="form-check-label" for="form2Example31"> Remember me </label>
+                      <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
                     </div>
                   </div>
               
@@ -94,7 +95,7 @@ const Login = (props) => {
                    </div>                
                 
                 <div className="text-center">
-                  <p>Not a member? <a href="#!">Register</a></p>
+                  <p>Not a member? <Link to="/register">Register</Link></p>
                   
                   
                 </div>

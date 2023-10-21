@@ -1,28 +1,29 @@
+import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch } from "react-router-dom";
-import './App.css';
-import AllPetList from './components/AllPetList';
-import Home from './components/Home';
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Navbar from './components/Navbar';
-import NotFound from './components/NotFound';
+import UploadPetImage from './components/UploadPetImage'
+import RegisterPet from './components/RegisterPet'
+import DisplayImage from './components/DisplayImage'
+import Navbar from './components/Navbar'
+import Login from './components/Login'
+import AllPetList from './components/AllPetList'
+import NotFound from './components/NotFound'
+import { Route } from 'react-router-dom';
 import Register from './components/Register';
 
 function App() {
   return (
     <div>
-        <Navbar />
-        <Switch>
-            <Route exact path="/" component= {Login }></Route>
-            <Route exact path="/login" component= {Login}></Route>
-            <Route exact path="/logout" component= {Logout}></Route>
-            <Route exact path="/pet" component= {AllPetList}></Route>
-            <Route exact path="/home" component= {Home}></Route>
-            <Route exact path="/register" component= {Register}></Route>
-            <Route exact path="/*" component= {NotFound}></Route>
-        </Switch>
+      <Navbar />
+        <Route exact path="/pet-image" component={UploadPetImage}></Route>
+        <Route exact path="/pet-register" component={RegisterPet}></Route>
+        <Route exact path="/pet-image/:pid" component={DisplayImage}></Route>
+        <Route exact path="/" component= {Login}></Route>
+        <Route exact path="/login" component= {Login}></Route>
+        <Route exact path="/pet" component= {AllPetList}></Route>
+        <Route exact path="/register" component= {Register}></Route>
+        <Route exact path="/*" component= {NotFound}></Route>
     </div>
   )
 }
+
 export default App
