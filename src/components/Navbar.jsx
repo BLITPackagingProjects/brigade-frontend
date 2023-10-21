@@ -15,11 +15,17 @@ const Navbar = () => {
                     <li className="nav-item">
                     <Link className="nav-link" to="/pet">Inventory</Link>
                     </li>
-                    {localStorage.getItem("role") == "ROLE_USER" && <Link className="nav-link " to={`/applications/${localStorage.getItem('uid')}`} tabindex="-1">My Appliction</Link>}
-                    {localStorage.getItem("role") == "ROLE_EMPLOYEE" && <Link className="nav-link " to="/applications" tabindex="-1">Applictions</Link>}
+                    {/* {localStorage.getItem("role") == "ROLE_USER" && <Link className="nav-link " to={`/applications/${localStorage.getItem('uid')}`} tabindex="-1">My Appliction</Link>} */}
+                    {localStorage.getItem("pass")?
+                    (localStorage.getItem("role") == "Customer"?<Link to="/application">My Applications</Link>:<Link to="/applications">Applications</Link>):null
+                    }
+                    {/* {localStorage.getItem("role") == "ROLE_EMPLOYEE" && <Link className="nav-link " to="/applications" tabindex="-1">Applictions</Link>} */}
                     
                     <li className="nav-item">
-                    {localStorage.getItem("name") && <Link className="nav-link " to="/logout" tabindex="-1">Logout</Link>}
+                    {/* {localStorage.getItem("name") && <Link className="nav-link " to="/logout" tabindex="-1">Logout</Link>} */}
+                    {
+                        localStorage.getItem("pass")?<Link className="nav-link " to="/logout" tabindex="-1">Logout</Link>:null
+                    }
                     {localStorage.getItem("name")==null && <Link className="nav-link " to="/login" tabindex="-1">Login</Link>}
                     </li>
                 </ul>

@@ -31,7 +31,7 @@ const Login = (props) => {
               console.log(response.data);//JSON.stringify(response.data));
               if(response.status == 200){
                 console.log('status: 200')
-                localStorage.setItem("pass", pword.current.value);
+                localStorage.setItem("pass", response.data.password);
                 localStorage.setItem("name", uname.current.value);
                 localStorage.setItem("uid", response.data.id);
                 localStorage.setItem("role", response.data.role.name);

@@ -45,6 +45,9 @@ const loadPet =async()=>{
   <td>
   <Link to={`/pet-image/${d.pet_id}`} target={"_parent"} className="btn btn-primary">View Image</Link>
   </td>
+  <td>
+    <Link to={`/submitApp/${localStorage.getItem("uid")}/${d.pet_id}`} className="btn btn-success">Apply</Link>
+  </td>
 
   </tr>
   ))

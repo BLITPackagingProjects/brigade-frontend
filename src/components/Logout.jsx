@@ -1,6 +1,6 @@
 
 const Logout = (props) => {
-    const username = localStorage.getItem("name");
+    // const username = localStorage.getItem("name");
     localStorage.clear();
     props.history.replace("/home")
     
