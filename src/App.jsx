@@ -10,7 +10,6 @@ import NotFound from './components/NotFound'
 import { Route } from 'react-router-dom';
 
 function App() {
-
   return (
     <div>
       <Navbar />
