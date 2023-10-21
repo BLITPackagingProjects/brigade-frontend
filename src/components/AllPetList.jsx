@@ -12,7 +12,7 @@ useEffect(()=>{
 ,[]);
 
 const loadPet =async()=>{
-  const result = await axios.get("http://localhost:8080/pet");
+  const result = await axios.get("http://localhost:9090/pet");
   setPet(result.data);
 } 
 

@@ -27,7 +27,7 @@ function RegisterPet(props){
         formData.append('type', values.type);
         
         try{
-            await axios.post("http://localhost:8080/api/v1/pet", formData)
+            await axios.post("http://localhost:9090/api/v1/pet", formData)
             .then(alert("Pet Registered Successfully!"))
             .catch(err => console.log(err))
             props.history.replace("/pet");

@@ -17,7 +17,7 @@ const Register = (props) => {
     });
         let config = {
         method: 'post',
-        url: 'http://localhost:9090/register',
+        url: 'http://localhost:9090/user',
         headers: {
             'Content-Type': 'application/json'
         },

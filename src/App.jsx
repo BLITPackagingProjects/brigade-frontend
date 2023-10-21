@@ -8,6 +8,7 @@ import Login from './components/Login'
 import AllPetList from './components/AllPetList'
 import NotFound from './components/NotFound'
 import { Route } from 'react-router-dom';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/" component= {Login}></Route>
         <Route exact path="/login" component= {Login}></Route>
         <Route exact path="/pet" component= {AllPetList}></Route>
+        <Route exact path="/register" component= {Register}></Route>
         <Route exact path="/*" component= {NotFound}></Route>
     </div>
   )
