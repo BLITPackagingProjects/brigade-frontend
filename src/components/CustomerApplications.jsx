@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Applications = () => {
+const CustomerApplications = () => {
 const [list, setList]=useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:9090/application/${localStorage.getItem("uid")}`).then((res)=> setList(res.data)).catch((err)=>console.log(err))
@@ -56,4 +56,4 @@ const [list, setList]=useState([]);
   )
 }
 
-export default Applications
+export default CustomerApplications

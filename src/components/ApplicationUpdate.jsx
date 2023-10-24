@@ -5,6 +5,11 @@ const ApplicationUpdate = (props) => {
 
   const statusRef =  useRef();
 
+const handleDelete = () =>{
+  axios.delete(`http://localhost:9090/application/delete/${props.match.params.id}`)
+  props.history.push("/application")
+}
+
 const handleSubmit = (e)=>{
     e.preventDefault();
     // console.log(statusRef.current.value)
@@ -19,10 +24,9 @@ const handleSubmit = (e)=>{
     <form action="PUT" onSubmit={handleSubmit}>
         <label htmlFor="status">Status</label>
         <input id="status" type="text" ref={statusRef}/>
-
-        <button className='btn btn-success'>Update</button>
-
+        <button type="submit" className='btn btn-success'>Update</button>
     </form>
+    <button className='btn btn-danger' onClick={handleDelete}>Delete</button>
     </div>
   )
 }

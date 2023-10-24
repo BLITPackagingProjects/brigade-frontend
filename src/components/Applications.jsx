@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Applications = () => {
 const [list, setList]=useState([]);
+const count = 0;
     useEffect(()=>{
         axios.get("http://localhost:9090/application").then((res)=> setList(res.data)).catch((err)=>console.log(err))
-    },[])
+    },[count])
   return (
     <div>
         <table className="table table-striped text-center">
@@ -32,7 +33,7 @@ const [list, setList]=useState([]);
             <td>{item.pet.color}</td>
             <td>{item.pet.breed}</td>
             <td>{item.status}</td>
-            {localStorage.getItem("role") == "ROLE_Employee"?<td><Link to={`/update/${item.app_id}`} className='btn btn-primary'>Update</Link></td>:null}
+            {localStorage.getItem("role") == "ROLE_Employee"?<td><Link to={`/update/${item.app_id}`} className='btn btn-primary'>Update/Delete</Link></td>:null}
         </tr>
         
         {/* <button className='btn btn-success' onClick={(e)=>{

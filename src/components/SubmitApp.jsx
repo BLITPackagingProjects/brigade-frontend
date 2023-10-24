@@ -8,7 +8,7 @@ const SubmitApp = (props) => {
         }
         axios.post(`http://localhost:9090/application/${props.match.params.uid}/${props.match.params.petId}`,obj).then((res)=> alert(res.data))
         .catch((err)=>console.log(err))
-        props.history.replace("/application")
+        props.history.replace("/customer-applications")
     },[])
 
   return (
