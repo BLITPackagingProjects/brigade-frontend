@@ -9,9 +9,7 @@ const [list, setList]=useState([]);
   return (
     <div>
         <table className="table table-striped text-center">
-<tbody>
-
-<thead>
+        <thead>
     <tr>
       <th scope="col">Customer name</th>
       <th scope="col">Pet name</th>
@@ -20,6 +18,7 @@ const [list, setList]=useState([]);
       <th scope="col">Status</th>
     </tr>
   </thead>
+<tbody>
 
 {
     list.map((item)=>{
