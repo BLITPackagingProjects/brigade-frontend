@@ -21,8 +21,8 @@ const loadPet =async()=>{
         <div className="row">
         {
           pets.map((p) =>(
-            <div className="col-md-4">
-              <div className="card">
+            <div className="col-md-4"><br/>
+              <div className="card bg-light">
               <img className="card-img-top rounded mx-auto d-block mt-3" src={`http://localhost:9090/api/v1/pet/image/${p.pet_id}`}
               style={{height:240 + 'px',width:320 + 'px'}} alt={p.image}/>
                 <div className="card-body text-center">
