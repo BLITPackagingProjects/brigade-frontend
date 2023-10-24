@@ -13,6 +13,7 @@ import Applications from './components/Applications';
 import Logout from './components/Logout';
 import SubmitApp from './components/SubmitApp';
 import Home from './components/Home';
+import ApplicationUpdate from './components/ApplicationUpdate';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route exact path="/submitApp/:uid/:petId" component= {SubmitApp}></Route>
         <Route exact path="/application" component= {Applications}></Route>
         <Route exact path="/*" component= {NotFound}></Route>
+        <Route exact path="/update/:id" component= {ApplicationUpdate}></Route>
+        
     </div>
   )
 }
