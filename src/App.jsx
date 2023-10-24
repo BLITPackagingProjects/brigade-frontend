@@ -29,7 +29,6 @@ function App() {
         <Route exact path="/register" component= {Register}></Route>
         <Route exact path="/submitApp/:uid/:petId" component= {SubmitApp}></Route>
         <Route exact path="/application" component= {Applications}></Route>
-        <Route exact path="/*" component= {NotFound}></Route>
     </div>
   )
 }

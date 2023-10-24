@@ -22,7 +22,7 @@ const loadPet =async()=>{
         {
           pets.map((p) =>(
             <div className="col-md-4"><br/>
-              <div className="card bg-light">
+              <div className="card bg-light mb-4">
               <img className="card-img-top rounded mx-auto d-block mt-3" src={`http://localhost:9090/api/v1/pet/image/${p.pet_id}`}
               style={{height:240 + 'px',width:320 + 'px'}} alt={p.image}/>
                 <div className="card-body text-center">
@@ -45,7 +45,7 @@ const loadPet =async()=>{
                       </li>
                     </ul>
                   </p>
-                  <Link to={`/submitApp/${localStorage.getItem("uid")}/${p.pet_id}`} className="btn btn-success">Apply</Link>
+                  {localStorage.getItem("role") == "ROLE_Customer"?<Link to={`/submitApp/${localStorage.getItem("uid")}/${p.pet_id}`} className="btn btn-success">Apply</Link>:null}
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@ const loadPet =async()=>{
         } 
         </div><br/>
           <div className="d-flex justify-content-left">
-            <Link to="/pet-register" className='btn btn-primary'>Add pet</Link>
+          {localStorage.getItem("role") == "ROLE_Employee"?<Link to="/pet-register" className='btn btn-primary mb-5'>Add pet</Link>:null}
           </div>
       </div>
     );
