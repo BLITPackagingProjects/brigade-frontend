@@ -7,7 +7,7 @@ const ApplicationUpdate = (props) => {
 
 const handleDelete = () =>{
   axios.delete(`http://localhost:9090/application/delete/${props.match.params.id}`)
-  props.history.push("/applications")
+  props.history.replace("/applications")
 }
 
 const handleSubmit = (e)=>{

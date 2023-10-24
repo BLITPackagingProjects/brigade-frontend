@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const CustomerApplications = (props) => {
+const CustomerApplications = () => {
 const [list, setList]=useState([]);
 const [len, setLen] = useState();
     useEffect(()=>{
         axios.get(`http://localhost:9090/application/${localStorage.getItem("uid")}`).then((res)=> {
           setLen(res.data.length)
-          setList(res.data)}).catch((err)=>console.log(err))
-        console.log(props)
+          setList(res.data)
+        }).catch((err)=>console.log(err))
     },[len])
   return (
     <div>

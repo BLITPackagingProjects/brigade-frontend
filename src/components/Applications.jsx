@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Applications = () => {
 const [list, setList]=useState([]);
-const count = 0;
+const [len, setLen] = useState();
     useEffect(()=>{
-        axios.get("http://localhost:9090/application").then((res)=> setList(res.data)).catch((err)=>console.log(err))
-    },[count])
+        axios.get("http://localhost:9090/application").then((res)=> {
+          setList(res.data)
+          setLen(res.data.length)
+        }).catch((err)=>console.log(err))
+    },[len])
   return (
     <div>
         <table className="table table-striped text-center">
