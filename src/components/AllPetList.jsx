@@ -5,61 +5,58 @@ import {Link} from 'react-router-dom'
 const AllPetList = () => {
 
 const[pets, setPet] = useState([])
+const[image, setImg] = useState('');
 
 useEffect(()=>{
   loadPet();
-}     
-,[]);
+}, []);
 
 const loadPet =async()=>{
   const result = await axios.get("http://localhost:9090/pet");
   setPet(result.data);
-} 
+}
 
     return(
-        <div>
-            All Pets are here!
-            <table className="table table-striped text-center">
-              
-  <thead>
-    <tr>
-      <th scope="col">Pet Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Breed</th>
-      <th scope="col">Color</th>
-      <th scope="col">Type</th>
-      <th scope="col">Image</th>
-    </tr>
-  </thead>
-  <tbody>
-  {
-  pets.map((d) =>(
-  <tr key={d.pet_id}>
-  <td>{d.pet_id}</td>
-  <td>{d.name}</td>
-  <td>{d.age}</td>
-  <td>{d.breed}</td>
-  <td>{d.color}</td>
-  <td>{d.type}</td>
-  <td>
-  <Link to={`/pet-image/${d.pet_id}`} target={"_parent"} className="btn btn-primary">View Image</Link>
-  </td>
-  <td>
-    <Link to={`/submitApp/${localStorage.getItem("uid")}/${d.pet_id}`} className="btn btn-success">Apply</Link>
-  </td>
-
-  </tr>
-  ))
-  }
-  </tbody>
-</table>
-    <div className="d-flex justify-content-left">
-    &nbsp;&nbsp;<Link to="/pet-register" className='btn btn-primary'>Add pet</Link>
-    </div>
-      
-    </div>
-  );
+      <div className="container">
+        <div className="row">
+        {
+          pets.map((p) =>(
+            <div className="col-md-4">
+              <div className="card">
+              <img className="card-img-top rounded mx-auto d-block mt-3" src={`http://localhost:9090/api/v1/pet/image/${p.pet_id}`}
+              style={{height:240 + 'px',width:320 + 'px'}} alt={p.image}/>
+                <div className="card-body text-center">
+                  <h5 className="card-title">{p.name}</h5>
+                  <p className="card-text">
+                    <ul className="row">
+                      <li className="col">
+                        Age: {p.age}
+                      </li>
+                      <li className="col">
+                        Color: {p.color}
+                      </li>
+                    </ul>
+                    <ul className="row">
+                      <li className="col">
+                        Breed: {p.breed}
+                      </li>
+                      <li className="col">
+                        Type: {p.type}
+                      </li>
+                    </ul>
+                  </p>
+                  <Link to={`/submitApp/${localStorage.getItem("uid")}/${p.pet_id}`} className="btn btn-success">Apply</Link>
+                </div>
+              </div>
+            </div>
+          ))
+        } 
+        </div><br/>
+          <div className="d-flex justify-content-left">
+            <Link to="/pet-register" className='btn btn-primary'>Add pet</Link>
+          </div>
+      </div>
+    );
 
 }
 
