@@ -12,7 +12,7 @@ const handleSubmit = (e)=>{
         status:statusRef.current.value
       }
       axios.put(`http://localhost:9090/application/${props.match.params.id}`,obj).then((res)=>console.log(res.data))
-      props.history.replace("/application")
+      props.history.replace("/applications")
 }
   return (
     <div>

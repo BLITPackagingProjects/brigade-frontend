@@ -24,7 +24,7 @@ const loadPet =async()=>{
             <div className="col-md-4"><br/>
               <div className="card bg-light mb-4">
               <img className="card-img-top rounded mx-auto d-block mt-3" src={`http://localhost:9090/api/v1/pet/image/${p.pet_id}`}
-              style={{height:240 + 'px',width:320 + 'px'}} alt={p.image}/>
+              style={{height:240 + 'px',scale:90 + '%'}} alt={p.image}/>
                 <div className="card-body text-center">
                   <h5 className="card-title">{p.name}</h5>
                   <p className="card-text">

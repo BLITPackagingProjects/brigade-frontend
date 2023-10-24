@@ -9,6 +9,7 @@ import AllPetList from './components/AllPetList'
 import NotFound from './components/NotFound'
 import { Route } from 'react-router-dom';
 import Register from './components/Register';
+import CustomerApplications from './components/CustomerApplications';
 import Applications from './components/Applications';
 import Logout from './components/Logout';
 import SubmitApp from './components/SubmitApp';
@@ -29,7 +30,8 @@ function App() {
         <Route exact path="/pet" component= {AllPetList}></Route>
         <Route exact path="/register" component= {Register}></Route>
         <Route exact path="/submitApp/:uid/:petId" component= {SubmitApp}></Route>
-        <Route exact path="/application" component= {Applications}></Route>
+        <Route exact path="/customer-applications" component= {CustomerApplications}></Route>
+        <Route exact path="/applications" component= {Applications}></Route>
         <Route exact path="/*" component= {NotFound}></Route>
         <Route exact path="/update/:id" component= {ApplicationUpdate}></Route>
         

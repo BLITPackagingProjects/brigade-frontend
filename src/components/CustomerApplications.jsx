@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Applications = () => {
 const [list, setList]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:9090/application").then((res)=> setList(res.data)).catch((err)=>console.log(err))
+        axios.get(`http://localhost:9090/application/${localStorage.getItem("uid")}`).then((res)=> setList(res.data)).catch((err)=>console.log(err))
     },[])
   return (
     <div>
@@ -32,7 +32,7 @@ const [list, setList]=useState([]);
             <td>{item.pet.color}</td>
             <td>{item.pet.breed}</td>
             <td>{item.status}</td>
-            {localStorage.getItem("role") == "ROLE_Employee"?<td><Link to={`/update/${item.app_id}`} className='btn btn-primary'>Update</Link></td>:null}
+            {localStorage.getItem("role") == "Employee"?<td><Link to={`/update/${item.app_id}`} className='btn btn-primary'>Update</Link></td>:null}
         </tr>
         
         {/* <button className='btn btn-success' onClick={(e)=>{
