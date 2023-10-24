@@ -7,7 +7,7 @@ const ApplicationUpdate = (props) => {
 
 const handleDelete = () =>{
   axios.delete(`http://localhost:9090/application/delete/${props.match.params.id}`)
-  props.history.push("/application")
+  props.history.push("/applications")
 }
 
 const handleSubmit = (e)=>{
@@ -17,7 +17,7 @@ const handleSubmit = (e)=>{
         status:statusRef.current.value
       }
       axios.put(`http://localhost:9090/application/${props.match.params.id}`,obj).then((res)=>console.log(res.data))
-      props.history.replace("/applications")
+      props.history.push("/applications")
 }
   return (
     <div>

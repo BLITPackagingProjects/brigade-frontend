@@ -6,9 +6,9 @@ const SubmitApp = (props) => {
         const obj = {
             status:"pending"
         }
-        axios.post(`http://localhost:9090/application/${props.match.params.uid}/${props.match.params.petId}`,obj).then((res)=> alert(res.data))
+        axios.post(`http://localhost:9090/application/${props.match.params.uid}/${props.match.params.petId}`,obj)
         .catch((err)=>console.log(err))
-        props.history.replace("/customer-applications")
+        props.history.push(`/customer-applications/${1}`)
     },[])
 
   return (

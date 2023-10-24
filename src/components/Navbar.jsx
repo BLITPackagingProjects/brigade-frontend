@@ -17,7 +17,7 @@ const Navbar = () => {
                     </li>
                     {/* {localStorage.getItem("role") == "ROLE_USER" && <Link className="nav-link " to={`/applications/${localStorage.getItem('uid')}`} tabindex="-1">My Appliction</Link>} */}
                     {localStorage.getItem("pass")?
-                    (localStorage.getItem("role") == "ROLE_Customer"?<Link className="nav-link" to="/customer-applications">My Applications</Link>:<Link to="/applications">Applications</Link>):null
+                    (localStorage.getItem("role") == "ROLE_Customer"?<Link className="nav-link" to="/customer-applications/1">My Applications</Link>:<Link to="/applications">Applications</Link>):null
                     }
                     {/* {localStorage.getItem("role") == "ROLE_EMPLOYEE" && <Link className="nav-link " to="/applications" tabindex="-1">Applictions</Link>} */}
                     
