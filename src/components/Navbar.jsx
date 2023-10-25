@@ -3,7 +3,12 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid col-md-6 col-lg-8 ">
-                <a className="navbar-brand" href="/home">Navbar</a>
+                {/* <a className="navbar-brand" href="/home">Navbar</a> */}
+                <div class="container">
+    <a classname="navbar-brand" href="#">
+      <img className="rounded-circle" src="/brandLogo.jpg" alt="Bootstrap" width="100" height="100"/>
+    </a>
+  </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -28,12 +33,23 @@ const Navbar = () => {
                     }
                     {localStorage.getItem("name")==null && <Link className="nav-link " to="/login" tabindex="-1">Login</Link>}
                     </li>
-                </ul>
-                <form className="d-flex">
-                    <p className="text-white mx-4 my-3">{localStorage.getItem("name")}</p> 
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                        <li className="nav-item">
+
+                   
+                        <p className="text-white">
+                            
+                            {localStorage.getItem("name")}
+                            </p>
+                        </li>
+                        <li className="nav-item">
+                            
+                        <img src="/user.jpg" className="rounded-circle" width="100" height="100"></img>
+                
+                        </li>
+                    {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button className="btn btn-outline-success" type="submit">Search</button> */}
+                    </ul>
+                
                 </div>
             </div>
         </nav>

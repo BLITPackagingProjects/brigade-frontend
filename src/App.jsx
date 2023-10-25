@@ -26,13 +26,12 @@ function App() {
         <Route exact path="/" component= {Home}></Route>
         {localStorage.getItem("pass")?<Route exact path="/" component= {Home}></Route>:<Route exact path="/login" component= {Login}></Route>}
         <Route exact path="/logout" component= {Logout}></Route>
-
+        <Route exact path="/home" component={Home}></Route>
         <Route exact path="/pet" component= {AllPetList}></Route>
         <Route exact path="/register" component= {Register}></Route>
         <Route exact path="/submitApp/:uid/:petId" component= {SubmitApp}></Route>
         <Route exact path="/customer-applications/:val" component= {CustomerApplications}></Route>
         <Route exact path="/applications" component= {Applications}></Route>
-        <Route exact path="/*" component= {NotFound}></Route>
         <Route exact path="/update/:id" component= {ApplicationUpdate}></Route>
         
     </div>

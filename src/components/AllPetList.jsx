@@ -28,22 +28,22 @@ const loadPet =async()=>{
                 <div className="card-body text-center">
                   <h5 className="card-title">{p.name}</h5>
                   <p className="card-text">
-                    <ul className="row">
-                      <li className="col">
+                    <div className="row">
+                      <p className="col">
                         Age: {p.age}
-                      </li>
-                      <li className="col">
+                      </p>
+                      <p className="col">
                         Color: {p.color}
-                      </li>
-                    </ul>
-                    <ul className="row">
-                      <li className="col">
+                      </p>
+                    </div>
+                    <div className="row">
+                      <p className="col">
                         Breed: {p.breed}
-                      </li>
-                      <li className="col">
+                      </p>
+                      <p className="col">
                         Type: {p.type}
-                      </li>
-                    </ul>
+                      </p>
+                    </div>
                   </p>
                   {localStorage.getItem("role") == "ROLE_Customer"?<Link to={`/submitApp/${localStorage.getItem("uid")}/${p.pet_id}`} className="btn btn-success">Apply</Link>:null}
                 </div>

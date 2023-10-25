@@ -19,7 +19,7 @@ const [len, setLen] = useState();
       <th scope="col">Customer name</th>
       <th scope="col">Pet name</th>
       <th scope="col">Pet Color</th>
-      <th scope="col">pet Breed</th>
+      <th scope="col">Pet Breed</th>
       <th scope="col">Status</th>
     </tr>
   </thead>
